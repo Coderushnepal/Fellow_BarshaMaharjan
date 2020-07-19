@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dot Generation</title>
+</head>
+<style>
+    .body,
+    .html {
+      margin: 0;
+      padding: 0;
+    }
+    .circle{
+        width: 15px;
+        height: 15px;
+        margin: 5px;
+        border-radius: 50%;
+         position: absolute;
+        background-color: green;
+    }
+    .frame {
+      height: 100vh;
+      margin-top: 10px;
+      border: 2px solid yellow;
+    }
+    #btn {
+        padding: 10px 15px;
+        margin: 0 auto;
+        background:yellow;
+        border-radius:6px;
+        border: 2px solid rgb(82, 177, 231);
+    }
+</style>
+<body>
+   <button id="btn">Generate </button>
+   <div class="frame" id="frame"></div> 
+  
+<script> 
+const btn=document.getElementById('btn');
+const frame=document.getElementById('frame');
+const height=frame.clientHeight;
+const width=frame.clientWidth;
+const margin = window.innerHeight - height;
+console.log(height, width, margin);
+btn.onclick=function(e){
+    var newCircle=document.createElement('div');
+    newCircle.classList.add('circle');
+    newCircle.style.top=margin+ Math.random()*height+'px';
+    newCircle.style.left=margin+ Math.random()*width+'px'; 
+    frame.appendChild(newCircle);
+}
+</script>
+</body>
+</html>
