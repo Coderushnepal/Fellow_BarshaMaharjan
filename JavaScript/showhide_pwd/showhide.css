@@ -1,0 +1,43 @@
+*{
+    margin:0;
+    padding:0;
+    font-family:arial;
+}
+body {
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    min-height: 50vh;
+    background: white;
+}
+.inputBox {
+position: relative;
+width: 300px;
+height:40px;
+}
+.inputBox input {
+    position: absolute;
+    top: 0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: transparent;
+    padding:0px 20px;
+    font-size: 16px;
+    box-sizing: border-box;
+    border-radius:4px;
+    border-color:#D5DBDB ;
+}
+.inputBox input::placeholder {
+    color:#ccc;
+}
+
+.fa{
+    position: absolute;
+    font-size: 20px;
+    color:#7a797e;
+    padding-left:250px;
+    cursor: pointer;
+    transform: translate(1, -50%);
+    top:10px;
+}
