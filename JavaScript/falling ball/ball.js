@@ -39,7 +39,7 @@ function Ball(i) {
 	};
 	this.move = function() {                          //ball falls //
 		this.clickable = true;
-		var movement = Math.ceil(Math.random() * 10);         //ceil -round-off to nearest value eg:1.2=2//
+		var movement = Math.ceil(Math.random() * 10);         //ceil -round-off to nearest value eg:1.2=2     determine speed of ball//
 		this.intervalId = setInterval(function() {
 			var currentTop = that.ball.style.top;
 			var nextTop = parseInt(currentTop) + movement;
