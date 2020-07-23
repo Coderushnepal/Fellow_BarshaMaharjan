@@ -42,7 +42,17 @@ find('s');
 find('b');
 find('t');
 
-// Q no.3
+var getArrayFromQ1 = res;
+	var dec = getArrayFromQ1.reduce(function(prev, current) {	
+		prev[current.id]= current;
+		delete current.id;	
+		return prev;
+	}, {});    
+   console.log(dec);
+
+
+
+// Q no.4
 function longestZero(str) {
 	return str.split('1').sort().pop().length;
   }
@@ -52,7 +62,7 @@ function longestZero(str) {
   console.log(longestZero("11111"));
   console.log(longestZero(""));
 
- // Q no.4
+ // Q no.5
   function replaceVowel(str) {
 	var strArr = str.split('');
 	for (var i = 0; i < str.length; i++) {
