@@ -1,9 +1,7 @@
 color = ["red", "lawnGreen", "blue", "chocolate", "gold", "silver", "violet"];
 
 function Ball(i) {
-	var ball = null;
 	var id = i;
-	this.intervalId = null;
 	var that = this;
 	this.clickable = false;
 	this.clickable = false;
