@@ -1,0 +1,25 @@
+.box {
+    border: 2px solid white;
+    background-color: mintcream;
+    width: 200px;
+    height:150px;
+   margin:20px;
+   left: 40%;
+    position: relative;
+    
+}
+.counter {
+    color:white;
+    background-color:grey ;
+    margin: 11px;
+    border-style: none;
+  }
+
+.red {
+    color: red;
+    font-size: 20px;
+}
+.blue {
+    color:blue;
+    font-size: 20px;
+}
