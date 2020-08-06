@@ -1,0 +1,19 @@
+.box {
+    background:white;
+    border-radius: 3px;
+    box-shadow: 0 0 10px 3px #C0392B ;
+    width: 200px;
+    height:100px;
+   margin:25px;
+   left: 40%;
+    position: relative;
+}
+.nam {
+    padding: 15px;
+    color:#2980B9 ;
+    font-family: 'Lucida Sans';
+}
+.fly {
+    color:#A93226 ;
+    padding-top: 20px;
+}
