@@ -24,7 +24,6 @@ var words = [
 var letter = function() {
   for (var j=0; j < randomWords.length; j++) {
     var newDash = document.createElement('div');
-    newDash.id = randomWords[j];
     newDash.classList.add('dashed');
     var divisions = document.getElementById('dashed-container');
         divisions.appendChild(newDash);

@@ -6,16 +6,18 @@ var i, j;
   for(i=5;i>=1;i--)
    {
    //inner loop
+   var str = '';
     for(j=1;j<=i;j++)
    {
-	console.log('*');
+	str+= "*"
     }
-	console.log(' ');
+	console.log(str);
    }
+   
 }
 pattern();
 
-   // Q no.2 solution
+   //Q no.2 solution
 function censor(str) {
 	let result = '';
 	words = str.split(' ');
@@ -30,7 +32,7 @@ function censor(str) {
 	}
 	return result;
 }
-// output of Q no.
+// output of Q no.2
 console.log(censor ('The code is fourty'));
 console.log(censor ('Two plue three is five'));
 console.log(censor ('aaaa aaaaa 1234 12345'));
@@ -38,10 +40,12 @@ console.log(censor ('aaaa aaaaa 1234 12345'));
 function toArray(obj) {
 	let keys = Object.keys(obj);
 	let len = keys.length;
-	// console.log(keys);
+	//console.log(keys);
 	let arr = [];
 	for (let i = 0; i < len; i++) {
-		arr.push([ keys[i], obj[keys[i]] ]);
+    
+      arr.push([ keys[i], obj[keys[i]] ]);
+      //console.log( obj[keys[i]] )
 	}
 	return arr;
 }
@@ -69,7 +73,8 @@ console.log(identicalFilter (["xxxxo","oxo","xox"]));
 // Q no. 5
 function keysAndValues(obj) {
 	let keys = Object.keys(obj);
-	keys.sort();
+   keys.sort();
+   //console.log(keys);
 	let values = [];
 	for (i = 0; i < keys.length; i++) {
 		values[i] = obj[keys[i]];
