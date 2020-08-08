@@ -79,7 +79,31 @@ h1{
 	margin-top: 20px;
 	cursor: pointer;
 }
+.already-guessed {
+  height: 50px;
+  width: 300px;
+  text-align: center;
+}
+.game-won {
+  height: 100px;
+  width: 200px;
+  background-color: whitesmoke;
+  padding-top: 20px;
+  color:black;
+  text-align: center;
+  position: absolute;
+  top: 100px;
+  display: none;
+}
 
+.game-won-btn {
+  padding: 10px 20px;
+  background-color: #34495e;
+  color: #ffffff;
+  margin-top: 20px;
+  border-radius: 4px;
+  border-style: none;
+}
 .game-over {
   height: 100px;
   width: 200px;

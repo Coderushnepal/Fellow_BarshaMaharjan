@@ -1,32 +1,46 @@
 var figureParts = document.getElementsByClassName('figure-part');
 var guessedWords = new Set();
 var wrongWords = new Set();
+var rightWords = [];
 
 // Get the entered letters from the keypress event and add to the guessedWords
 function matchWord() {
     document.addEventListener ('keypress' , function(event) {
-        var enterLetter = event.key;
+        
+        var alreadyGuessed = document.getElementById('already-guessed');
+    document.body.appendChild(alreadyGuessed);
         // to store the record of entered keys
-        guessedWords.add(enterLetter);
-        if (randomWords.includes (enterLetter))
+        if( Array.from(guessedWords).includes(event.key)) {
+            
+            console.log(alreadyGuessed);
+            alreadyGuessed.style.display = 'block';
+            alreadyGuessed.innerHTML = event.key +" has already been guessed";
+            
+        } else {
+            alreadyGuessed.style.display = 'none';
+            guessedWords.add(event.key);
+        if (randomWords.includes (event.key))
         for (var j=0; j < randomWords.length; j++) {
-            if (enterLetter == randomWords[j]) {
-                displayRightGuess(enterLetter , j);
-                // console.log(enterLetter);
+            if (event.key == randomWords[j]) {
+                displayRightGuess(event.key , j);
+                
             } 
         }
             else {
-                wrongWords.add(enterLetter);
+                wrongWords.add(event.key);
             displayWrongGuess(wrongWords);
         } 
-    })
+    }
+    });
 }
 matchWord();
 
 // Displayes the matched letters 
 function displayRightGuess(value, index) {
+    rightWords.push(value);
     const letterContainer = document.getElementById('dashed-container').children[index];
-	letterContainer.innerHTML = value;
+    letterContainer.innerHTML = value;
+    gameWon(rightWords);
 }
 
 //hiding each body parts
