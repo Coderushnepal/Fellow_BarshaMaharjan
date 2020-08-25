@@ -1,0 +1,11 @@
+.four-oh-four {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 97vh;
+    width: 100%;
+    font-size: 30px;
+    color: red;
+    overflow: hidden;
+ 
+}
