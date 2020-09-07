@@ -4,7 +4,9 @@
   "description": "A simple todo API",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --watch index.js --watch src/ --exec babel-node index.js"
+    "start": "nodemon --watch index.js --watch src/ --exec babel-node index.js",
+    "migrate": "yarn knex migrate:latest -- knexfile src/knexfile.js",
+    "rollback": "yarn knex migrate:rollback -- knexfile src/knexfile.js"
   },
   "author": "",
   "license": "ISC",

@@ -13,7 +13,7 @@ const table = 'users';
    }
 
    export async function getById(id) {
-       const [result] = await connection.select('*').from(table).where({id}).where('is_active', true);
+      const [result] = await connection.select('*').from(table).where({ id }).where('is_active', true);
 
        return result ? camelize(result) : null;
     }
@@ -24,6 +24,11 @@ const table = 'users';
        return camelize(data);
     }
     export async function remove(userId) {
-      const [data] = await connection(table).update({ 'is_active' : false}).where({id: userId});
+      return connection(table).update({ 'is_active' : false}).where({id: userId});
+            
+   }
+
+   export async function update(userId, params) {
+    return connection(table).update(snakeize(params)).where({id: userId});
             
    }

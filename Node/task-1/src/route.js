@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
 import * as endpoints from '../src/constants/endpoints';
-import { validateUserCreation } from './schemas/user';
+import { validateUserCreation, validateUserUpdate } from './schemas/user';
 import * as userController from './controllers/userController';
 
 
@@ -22,7 +22,7 @@ router.get('/', (req, res, next) => {
     
     router.delete(endpoints.DELETE_USER, userController.deleteUser);
     
-    router.put(endpoints.UPDATE_USER, userController.updateUser);
+    router.put(endpoints.UPDATE_USER, validateUserUpdate, userController.updateUser);
 
     //module.exports = router;             export syntax es5//
     export default router;

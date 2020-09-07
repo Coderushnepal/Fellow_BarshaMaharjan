@@ -30,20 +30,11 @@ export async function getAllUsers() {
  * @param userId
  * **/
 export async function getUserById(userId) {
-   
-        logger.info(` Fetching all users info with id ${userId}`);
-       
-        const result = await User.getById(userId);
-    
-        if(!result){
-            logger.error(` Cannot find users info with id ${userId}`);
-            throw new NotFoundError (`Cannot find users info with id ${userId}`);
-        }
-
+   const result = await verifyUserExistence(userId);
         const phoneNumbers = await UserPhoneNumber.getPhoneNumbersByUserId(userId);
 
           return {
-            data:{
+            data: {
                  ...result,
                  phoneNumbers
                 },
@@ -84,19 +75,7 @@ export async function createUser(params) {
  * @param userId
  * **/
 export async function deleteUser(userId) {
-    logger.info(` Fetching all users info with id ${userId}`);
-       
-        const result = await User.getById(userId);
-    
-        if(!result){
-            logger.error(` Cannot find users info with id ${userId}`);
-            throw new NotFoundError (`Cannot find users info with id ${userId}`);
-        }
-    const doesUserExist = usersJson.find(user => user.id === userId);
-    if(!doesUserExist) {
-        logger.error(` Cannot find users info with id ${userId}`);
-        throw new Error (`Cannot find users info with id ${userId}`);
-    }
+    await verifyUserExistence(userId);
 
    await  User.remove(userId);
    return {
@@ -109,19 +88,27 @@ export async function deleteUser(userId) {
  * @param {*} userId
  * @param {*} params
  * **/
-export function updateUser(userId, params) {
-   
-        const updatedJson = usersJson.map(user=> {
-           if(user.is === userId) {
-               return {
-                   ...user,                 // orginal info//
-                   ...params                // orgiinal is over ride by input data//
-               };
-           } 
-           return user;
-        });
+export  async function updateUser(userId, params) {
+   const result = await verifyUserExistence(userId);
+    await User.update(userId, params);
            
             return{
+                data: {
+                    ...result,
+                    ...params
+                },
                 message:'User updates with id ' + userId,
-            }; 
+            };     
+}
+
+async function verifyUserExistence(userId) {
+    logger.info(` Fetching all users info with id ${userId}`);
+       
+        const result = await User.getById(userId);
+    
+        if(!result){
+            logger.error(` Cannot find users info with id ${userId}`);
+            throw new NotFoundError (`Cannot find users info with id ${userId}`);
+        }
+        return result;
 }
