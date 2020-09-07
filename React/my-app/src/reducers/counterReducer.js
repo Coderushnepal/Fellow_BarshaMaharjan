@@ -1,4 +1,4 @@
-import { COUNTER_INCREMENT, COUNTER_DECREMENT } from "../constants/action"
+import { COUNTER_INCREMENT, COUNTER_DECREMENT, COUNTER_MODIFY} from "../constants/action"
 
 const initialState = {
 count:0,
@@ -16,6 +16,11 @@ const counterReducer = (state = initialState, action) => {
         ...state,
         count: state.count - 1,
     };
+    case COUNTER_MODIFY:
+        return {
+          ...state,
+          count: action.payload,
+        };
     default:
         return state;
 }

@@ -1,4 +1,4 @@
-import {COUNTER_INCREMENT, COUNTER_DECREMENT} from "../constants/action";
+import {COUNTER_INCREMENT, COUNTER_DECREMENT,  COUNTER_MODIFY,} from "../constants/action";
 
 export const increaseCount = () => {
     return {type: COUNTER_INCREMENT};
@@ -7,3 +7,7 @@ export const increaseCount = () => {
 export const decreaseCount = () => {
     return {type: COUNTER_DECREMENT};
 }
+
+export const modifyCount = (value) => {
+    return { type: COUNTER_MODIFY, payload: value };
+  };
