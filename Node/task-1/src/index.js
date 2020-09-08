@@ -3,9 +3,9 @@ import dotenv from 'dotenv';
 import express from 'express';
 import bodyParser from 'body-parser';
 
-import routes from './src/route';
-import logger from './src/utils/logger';
-import genericErrorHandler from './src/middlewares/genericErrorHandler';
+import routes from './route';
+import logger from './utils/logger';
+import genericErrorHandler from './middlewares/genericErrorHandler';
 
 
 
@@ -26,7 +26,7 @@ app.use(routes);
 app.use(genericErrorHandler);
 
 dotenv.config();
-app.listen(process.env.APP_PORT, () => {
-logger.info(`Listening on port ${process.env.APP_PORT}`);
+app.listen(process.env.PORT, () => {
+logger.info(`Listening on port ${process.env.PORT}`);
 });
 

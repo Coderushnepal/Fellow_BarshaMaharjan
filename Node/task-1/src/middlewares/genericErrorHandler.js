@@ -1,7 +1,7 @@
 import {StatusCodes} from 'http-status-codes';
 import NotFoundError from '../utils/NotFoundError';
-import BadRequestError from './BadRequestError';
-import UnauthorizedError from './UnauthorizedError';
+import BadRequestError from '../utils/BadRequestError';
+import UnauthorizedError from '../utils/UnauthorizedError';
  
 
 export default function genericErrorHandler(err, req, res, next) {

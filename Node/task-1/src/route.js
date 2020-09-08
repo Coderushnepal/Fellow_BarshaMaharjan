@@ -1,7 +1,8 @@
 import { Router } from 'express';
 
 import * as endpoints from '../src/constants/endpoints';
-import { validateUserCreation, validateUserUpdate } from './schemas/user';
+import * as todoController from './controllers/todo';
+import { validateUserCreation} from './schemas/user';
 import * as userController from './controllers/userController';
 
 
@@ -13,16 +14,11 @@ router.get('/', (req, res, next) => {
     version:'1.0.0'
         });
     });
-    
-    router.get( endpoints.GET_USERS, userController.getAllUsers);
-    
-    router.get(endpoints.GET_USER_BY_ID, userController.getUserById);
-    
-    router.post(endpoints.CREATE_USER, validateUserCreation, userController.createUser);
-    
-    router.delete(endpoints.DELETE_USER, userController.deleteUser);
-    
-    router.put(endpoints.UPDATE_USER, validateUserUpdate, userController.updateUser);
 
+    router.post(endpoints.CREATE_USER, validateUserCreation, userController.createUser);
+
+    router.get(endpoints.GET_ALL_TODOS, todoController.getAllTodos);
+
+router.get(endpoints.GET_TODO_BY_ID, todoController.getTodoById);
     //module.exports = router;             export syntax es5//
     export default router;
