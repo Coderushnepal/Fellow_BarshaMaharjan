@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import * as endpoints from '../src/constants/endpoints';
+import * as endpoints from './constants/endpoints';
 import * as todoController from './controllers/todo';
 import { validateUserCreation} from './schemas/user';
 import * as userController from './controllers/userController';
@@ -19,6 +19,6 @@ router.get('/', (req, res, next) => {
 
     router.get(endpoints.GET_ALL_TODOS, todoController.getAllTodos);
 
-router.get(endpoints.GET_TODO_BY_ID, todoController.getTodoById);
-    //module.exports = router;             export syntax es5//
+    router.get(endpoints.GET_TODO_BY_ID, todoController.getTodoById);
+  
     export default router;
