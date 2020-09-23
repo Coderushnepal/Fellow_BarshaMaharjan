@@ -1,0 +1,19 @@
+/**
+ * Create 'table_name' table
+ *
+ * @param knex
+ * @returns {Promise}
+ */
+export function up(knex) {
+  return knex.schema.createTable("table_name", (table) => {});
+}
+
+/**
+ * Drop table 'table_name'
+ *
+ * @param knex
+ * @returns {Promise}
+ */
+export function down(knex) {
+  return knex.schema.dropTable("table_name");
+}

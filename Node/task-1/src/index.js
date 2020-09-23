@@ -16,7 +16,9 @@ const loginMiddleware = (req, res, next) => {
     logger.info(`${method} ${url}`);
 
     next();
-}
+};
+dotenv.config();
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -25,7 +27,7 @@ app.use(loginMiddleware);
 app.use(routes);
 app.use(genericErrorHandler);
 
-dotenv.config();
+
 app.listen(process.env.PORT, () => {
 logger.info(`Listening on port ${process.env.PORT}`);
 });

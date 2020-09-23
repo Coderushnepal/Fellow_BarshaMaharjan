@@ -1,4 +1,5 @@
 import logger from '../utils/logger';
+import { hash } from '../utils/crypt';
 import * as User from '../models/userModel';
 import NotFoundError from '../utils/NotFoundError';
 import BadRequestError from '../utils/BadRequestError';
@@ -9,17 +10,19 @@ import BadRequestError from '../utils/BadRequestError';
  * **/
 export async function createUser(params) {
     const existingUser = await User.getUserByEmail(params.email);
-    if (existingUser) {
+     if (existingUser) {
         logger.error('There is already an existing user with this email');
         throw new BadRequestError('There is already an existing user with this email');
     }
-    const userInsertData = await User.create(params);
+    const hashedPassword = hash(params.password);
+
+  const userInsertData = await User.create({ ...params, password: hashedPassword });
             return{
                 data: userInsertData,
                 message: "New user added successfully"
             };     
 }
-
+ 
 /**
  * Get user by id.
  *
