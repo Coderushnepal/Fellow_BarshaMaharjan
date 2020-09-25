@@ -36,16 +36,16 @@ import iziToast from 'izitoast';
             formData : {
                 ...this.state.formData,
                 [event.target.name]:event.target.value
-            }
-          })
+            },
+          });
           console.log(this.state.formData)
-        }
+        };
 
         handleSubmit = (event) => {
           event.preventDefault();
         }
         render() {
-          const { email, password } = this.state.formData;
+          // const { email, password } = this.state.formData;
           return (
             <div id="overlay"> 
             
@@ -61,7 +61,7 @@ import iziToast from 'izitoast';
                 type="email"
                 className="border-0-login form-control-login input-border-none"
                 placeholder="Email"
-                value={email}
+                value={this.state.email}
                 required
               />
             </div>
@@ -77,13 +77,14 @@ import iziToast from 'izitoast';
                 type="password"
                 className="border-0-login form-control-login input-border-none"
                 placeholder="Password"
-                value={password}
+                value={this.state.password}
               />
             </div>
       
             <br/>
             <p className="text-center">
-              <button className="button-signup fondo-color-login" 
+              <button 
+              className="button-signup fondo-color-login" 
               onClick={this.submitData}>
                 <b>LOG IN</b>
               </button>

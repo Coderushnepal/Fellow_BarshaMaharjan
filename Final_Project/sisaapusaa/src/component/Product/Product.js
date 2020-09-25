@@ -7,8 +7,8 @@ import axios from 'axios';
 
 export default class Product extends Component {
 
-    componentDidMount(productId) {
-        axios.get(`http://localhost:8848/product/${productId}`)
+    componentDidMount() {
+        axios.get(`http://localhost:5000/product/${this.props.product.id}`)
         .then(res=> {
             console.log(res.data.data);
             const product = res.data.data;
@@ -17,7 +17,7 @@ export default class Product extends Component {
     }
 
     render () {
-        const {id, title, image, price, productId, inCart} = this.props.product
+        const {id, title, img, price, inCart} = this.props.product
            
         return (
             <div className="col-9 mx-auto col-md-6 col-lg-3 my-3 grid-color">
@@ -30,7 +30,7 @@ export default class Product extends Component {
                                  {value.handleDetail(id)}}
                              >
                                  <Link to="/details">
-                                     <img src={image} alt="product" className="card-img-top"/>
+                                     <img src={img} alt="product" className="card-img-top"/>
                                     
                                      </Link>
                                      <button 
@@ -73,7 +73,7 @@ export default class Product extends Component {
 Product.propTypes = {
     product: PropTypes.shape ({
     id:PropTypes.number,
-    img:PropTypes.string,
+    image:PropTypes.string,
     title:PropTypes.string,
     price:PropTypes.number,
     inCart:PropTypes.bool

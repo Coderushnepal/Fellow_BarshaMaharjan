@@ -28,9 +28,14 @@ export default class Nav extends Component {
                           {/* <div >{ token ? */}
                             <Link to ="/cart">
                                 <button className="btn-nav" >
-                                <i className="fa fa-shopping-cart" aria-hidden="true" ></i> My Cart </button>
+                                <i className="fa fa-shopping-cart" aria-hidden="true" ></i>Cart </button>
                                 </Link>  
                                 
+                                <Link to ="/product/upload">
+                                <button className="btn-nav" >
+                                <i className="fa fa-upload" aria-hidden="true" ></i> Upload </button>
+                                </Link>  
+
                                 {/* :null }
                                    </div> */}
                                 </li>
@@ -38,16 +43,16 @@ export default class Nav extends Component {
                                 <div className="dropdown">
                                 <Link to ="/login" className="ml-auto">
                                     <button className="btn-nav" >
-                                    <i className="fa fa-user-circle" aria-hidden="true" ></i> LogIn </button>
+                                    <i className="fa fa-user-circle" aria-hidden="true" ></i> Login </button>
                                     </Link>
                                     {/* <div>
                              <button onClick={this.logout}>Logout </button>
                         </div>  */}
-                                    </div>
                                     <Link to ="/signup" className="ml-auto">
                                     <button className="btn-nav" >
-                                    <i className="fa fa-user-plus"  aria-hidden="true" ></i> SignUp </button>
+                                    <i className="fa fa-user-plus"  aria-hidden="true" ></i> Signup </button>
                                         </Link>  
+                                        </div>
                                     
                                     </li>
                                     </ul>

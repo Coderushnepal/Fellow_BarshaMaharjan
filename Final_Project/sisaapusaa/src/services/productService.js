@@ -12,6 +12,7 @@ export const fetchProduct = async () => {
 
 export const fetchProductById  = async (id) => {
     //call single async api
+    console.log('this is id', id);
     const {data} =await http.get(`/product/${id}`);
     return data[0];
 

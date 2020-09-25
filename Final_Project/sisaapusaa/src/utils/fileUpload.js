@@ -1,79 +1,45 @@
-import React, { useState } from 'react'
-import Dropzone from 'react-dropzone';
+import React from 'react';
 import axios from 'axios';
 
 
-function FileUpload(props) {
-const [Images, setImages] = useState([])
-
-const onDrop = (files) => {
-
-    let formData = new FormData();
-    const config = {
-        header: { 'content-type': 'multipart/form-data' }
+class Image extends React.Component {
+    state = {
+      image: [],
+    };
+  
+    componentDidMount() {
+      axios.get(`http://localhost:5000/allposts`).then((res) => {
+        const image = res.data.data;
+        // console.log("This is imageeeeeeee", image);
+        this.setState({ image });
+      });
     }
-    formData.append("file", files[0])
-    //save the Image we chose inside the Node Server 
-    axios.post('/product/uploadImage', formData, config)
-        .then(response => {
-            if (response.data.success) {
-
-                setImages([ response.data.image])
-                props.refreshFunction([response.data.image])
-
-            } else {
-                alert('Failed to save the Image in Server')
-            }
-        })
-}
-
-
-const onDelete = (image) => {
-    const currentIndex = Images.indexOf(image);
-
-    let newImages = [...Images]
-    newImages.splice(currentIndex, 1)
-
-    setImages(newImages)
-    props.refreshFunction(newImages)
-}
+  
+    render() {
 
 return (
-    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Dropzone
-            onDrop={onDrop}
-            multiple={false}
-            maxSize={800000000}
+    <div className="image-container">
+    {this.state.image.map((img, index) => (
+      <div index={index}>
+        <div
+          className="image-wrapper image-container"
+          key={`image-${img.id}`}
         >
-            {({ getRootProps, getInputProps }) => (
-                <div style={{
-                    width: '300px', height: '240px', border: '1px solid lightgray',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center'
-                }}
-                    {...getRootProps()}
-                >
-                    {console.log('getRootProps', { ...getRootProps() })}
-                    {console.log('getInputProps', { ...getInputProps() })}
-                    <input {...getInputProps()} />
-                    <i className="fa fa-plus" aria-hidden="true"  style={{ fontSize: '3rem'}} > </i> 
-
-                </div>
-            )}
-        </Dropzone>
-
-        <div style={{ display: 'flex', width: '350px', height: '240px', overflowX: 'scroll' }}>
-
-            {Images.map((image, id) => (
-                <div onClick={() => onDelete(image)}>
-                    <img style={{ minWidth: '300px', width: '300px', height: '240px' }} src={`http://localhos8848/${image}`} alt={`productImg-${id}`} />
-                </div>
-            ))}
-
-
+          <img
+            src={img.postPhoto}
+            className="gallery-image image"
+          />
         </div>
+      </div>
+    ))}
+  </div>
 
-    </div>
-)
+ );
+
+}
 }
 
-export default FileUpload
+export default Image;
+
+
+               

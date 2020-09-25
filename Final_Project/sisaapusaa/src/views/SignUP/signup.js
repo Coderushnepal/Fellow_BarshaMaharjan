@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
-import {signup} from '../../services/signupServices';
-import iziToast from 'izitoast';
-
+import { Link } from 'react-router-dom';
+ import {signup} from '../../services/signupServices';
+  import iziToast from 'izitoast';
+import axios from 'axios';
 export default class SignUp extends Component {
 
   constructor(props){
@@ -30,6 +30,26 @@ this.props.history.push('/products');
 //   this.setState({ loginCredentials});
 }
 
+// fetchData = () => {
+//   axios({
+//     method: "POST",
+//     url: "http://localhost:5000/user/signup",
+//     data: {
+//       email: this.state.formData.email,
+//       password: this.state.formData.password,
+//     },
+//   })
+//     .then((res) => {
+//       console.log(res);
+//       const token = res.data.data.token;
+//       localStorage.setItem("Token", token);
+//       this.props.history.push("/product");
+//     })
+  
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// };
 
 handleChange = (event) => {
 console.log("reached")
@@ -62,9 +82,10 @@ event.preventDefault();
               </div>
               <input onChange={this.handleChange} 
                 type="email"
+                id="email"
                 className="border-0-login form-control-login input-border-none"
                 placeholder="Email"
-                value={email} 
+                value= {this.state.email} 
                 required 
               />
             </div>
@@ -80,13 +101,14 @@ event.preventDefault();
                 type="password"
                 className="border-0-login form-control-login input-border-none"
                 placeholder="Password"
-                value={password}
+                value={this.state.password}
               />
             </div>
       
             <br/>
             <p className="text-center">
-              <button className="button-signup fondo-color-signup "   onClick={this.submitData}>
+              <button className="button-signup fondo-color-signup " 
+              onClick={this.fetchData}>
                 <b>SIGNUP</b>
               </button>
             </p>

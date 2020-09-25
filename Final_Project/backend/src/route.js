@@ -6,6 +6,8 @@ import * as productController from "./controllers/product";
 import auth from './middlewares/Authenticate';
 import {validateUserLogin, validateUserCreation,
 } from "./schemas/userLogin";
+import * as postController from "./controllers/upload";
+import { validateAddPost } from "./schemas/upload";
 
 const router = Router();
 
@@ -53,6 +55,13 @@ router.delete(
     endpoints. GET_Product_BY_ID,
     productController.getProductContentById
     );
-  
+    //Upload image in server
+    router.post(
+      endpoints.CREATE_POST, 
+    
+      postController.createPost);
+
+      router.get(endpoints.ALL_POSTS, 
+        postController.getAllPosts);
 
 export default router;

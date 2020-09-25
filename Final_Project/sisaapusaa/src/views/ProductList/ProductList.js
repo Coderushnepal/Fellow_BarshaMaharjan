@@ -5,8 +5,8 @@ import Title from "../../component/common/title";
 import {ProductConsumer} from "../../Main/context";
 import { Header } from '../../component/common/header';
 import {  fetchProduct  } from '../../services/productService';
-
-
+import { Image } from "../../utils/index";
+ 
 function searchingFor(searchText) {
     return function(x) {
         return x.title.toLowerCase().includes(searchText.toLowerCase()||searchText)
@@ -67,6 +67,7 @@ export default class ProductList extends Component {
                         }
                         
                     </ProductConsumer>
+                    <Image/>
                     </div>
                 </div>
                 </div>

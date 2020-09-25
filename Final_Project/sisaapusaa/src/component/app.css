@@ -24,7 +24,8 @@ font-size:1.4rem;
     float: right;
     list-style: none;
     display: flex;
-    font-size: 16px;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif, sans-serif;
   }
 .btn-nav{ 
     background:transparent;

@@ -38,16 +38,16 @@ export async function userLogin(params) {
   });
 
   if (!user) {
-    logger.error("Invalid Login Credentials");
+    logger.error("Invalid Login user Credentials");
 
-    throw new BadRequestError("Invalid login credentials");
+    throw new BadRequestError("Invalid login u credentials");
   }
 
   const isPasswordValid = compare(password, user.password);
   if (!isPasswordValid) {
-    logger.error("Invalid login credentials");
+    logger.error("Invalid login password credentials");
 
-    throw new BadRequestError("Invalid login credentials");
+    throw new BadRequestError("Invalid login pwd credentials");
   }
 
   const token = generateToken({
